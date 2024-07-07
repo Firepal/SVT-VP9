@@ -149,8 +149,8 @@ typedef struct EbSvtVp9EncConfiguration
     * 60, 50, 30, (24 or 25) respectively.
     * -1 = no intra update.
     * -2 = auto.
-    * [-2 - 255]
-    * Deault is -2. */
+    * [-2 - 511]
+    * Default is -2. */
     int32_t                  intra_period;
 
     /* Prediction structure used to construct GOP. There are two main structures

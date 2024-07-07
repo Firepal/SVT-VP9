@@ -2264,12 +2264,12 @@ static EbErrorType  verify_settings(
     }
 
     if (config->qp > MAX_QP_VALUE) {
-        SVT_LOG("Error instance %u: QP must be [0 - %d]\n", channel_number + 1, MAX_QP_VALUE);
+        SVT_LOG("Error instance %u: QP must be [0 - %u]\n", channel_number + 1, MAX_QP_VALUE);
         return_error = EB_ErrorBadParameter;
     }
 
-    if (config->intra_period < -2 || config->intra_period > 255) {
-        SVT_LOG("Error Instance %u: The intra period must be [-2 - 255] \n", channel_number + 1);
+    if (config->intra_period < -2 || config->intra_period > 511) {
+        SVT_LOG("Error Instance %u: The intra period must be [-2 - 511] \n", channel_number + 1);
         return_error = EB_ErrorBadParameter;
     }
 
@@ -2329,10 +2329,6 @@ static EbErrorType  verify_settings(
         SVT_LOG("Error Instance %u: The frame rate should be greater than 0 fps \n", channel_number + 1);
         return_error = EB_ErrorBadParameter;
     }
-    if (config->intra_period < -2 || config->intra_period > 255) {
-        SVT_LOG("Error Instance %u: The intra period must be [-2 - 255] \n", channel_number + 1);
-        return_error = EB_ErrorBadParameter;
-    }
 
     if (config->rate_control_mode > 2) {
         SVT_LOG("Error Instance %u: The rate control mode must be [0 - 2] \n", channel_number + 1);
@@ -2346,12 +2342,12 @@ static EbErrorType  verify_settings(
 #endif
 
 #if VP9_RC
-    if (config->max_qp_allowed > 63) {
-        SVT_LOG("Error instance %u: max_qp_allowed must be [0 - 63]\n", channel_number + 1);
+    if (config->max_qp_allowed > MAX_QP_VALUE) {
+        SVT_LOG("Error instance %u: max_qp_allowed must be [0 - %u]\n", channel_number + 1, MAX_QP_VALUE);
         return_error = EB_ErrorBadParameter;
     }
-    else if (config->min_qp_allowed > 62) {
-        SVT_LOG("Error instance %u: min_qp_allowed must be [0 - 62]\n", channel_number + 1);
+    else if (config->min_qp_allowed > MAX_QP_VALUE-1) {
+        SVT_LOG("Error instance %u: min_qp_allowed must be [0 - %u]\n", channel_number + 1, MAX_QP_VALUE-1);
         return_error = EB_ErrorBadParameter;
     }
 #else

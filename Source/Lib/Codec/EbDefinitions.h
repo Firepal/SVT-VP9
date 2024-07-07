@@ -783,7 +783,7 @@ Groups of Pictures (GOP) units.
 #define MIN_PU_SIZE                                 (1 << LOG_MIN_PU_SIZE)
 #define MAX_NUM_OF_REF_PIC_LIST                     2
 #define EB_MAX_SB_DEPTH                             5
-#define MAX_QP_VALUE                                63
+#define MAX_QP_VALUE                                70
 #define MAX_LAD                                     120
 #define SCD_LAD                                     6
 
